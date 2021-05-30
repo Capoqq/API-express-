@@ -11,7 +11,7 @@
  objPersona.Edad = req.body.Edad;
  objPersona.Sexo = req.body.Sexo;
  objPersona.IsProfesional = req.body.IsProfesional;
-
+objPersona.IdEmpresa = req.body.IdEmpresa   
  objPersona.save(function(error,retorno){
      if(error) callback({estado: {codigo:2, respuesta: err.message}});
      callback({estado:{codigo:1,respuesta: 'Proceso exitoso'}, usuario: retorno});
@@ -25,6 +25,7 @@
        personaBuscada.Edad = req.body.Edad;
        personaBuscada.Sexo = req.body.Sexo;
        personaBuscada.IsProfesional = req.body.IsProfesional;
+       personaBuscada.IdEmpresa = req.body.IdEmpresa
        personaBuscada.save(function(error,resultadoUpdate){
             if(error) callback({estado: {codigo:2, respuesta: error.message}});
             callback({estado:{codigo:1,respuesta: 'Proceso exitoso'}, persona: resultadoUpdate});
@@ -56,4 +57,7 @@ exports.findAllPersona = function(req, callback){
         if(err) callback({estado: {codigo:2, respuesta: err.message}});
         callback({estado:{codigo:1,respuesta: 'Proceso exitoso'}, personas: personasBuscada});
     }); 
+}
+exports.login = function(req, callback){
+  personaModel.f
 }

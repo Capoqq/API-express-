@@ -44,7 +44,7 @@ exports.findByIdPublicacion = function(req, callback){
          });
      
 }
-//Filtrar todas las persona del contenedor
+//Filtrar todas las publicaciones del contenedor
 exports.findAllPublicacion = function(req, callback){
     publicacionModel.find({}, function(err, publicacionBuscada){   
         if(err) callback({estado: {codigo:2, respuesta: err.message}});

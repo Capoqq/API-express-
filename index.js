@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const app = express();
 var controladorePersona = require('./controladores/PersonaControlador')
 var controladorPublicacion = require('./controladores/PublicacionController')
+var controladorEmpresa = require('./controladores/EmpresaController')
 //Configuracion
 app.use(express.json())
 app.use(methodOverride())
@@ -88,6 +89,30 @@ router.get('/API/publicacion/findPublicacion/:id', function(req,res){
         res.send(data);
     })
 })
+//Agregar empresa
+router.post('/API/empresa/AddEmpresa', function(req,res){
+    controladorEmpresa.addEmpresa(req,function(data){
+        res.send(data);
+    })
+})
+//MOSTRAR TODAS LAS EMPRESAS
+router.get('/API/empresa/findAllEmpresa', function(req,res){
+    controladorEmpresa.findAllEmpresa(req,function(data){
+        res.send(data);
+    })
+})
+//Eliminar empresa
+router.delete('/API/empresa/DeleteEmpresa/:id', function(req,res){
+    controladorEmpresa.deleteEmpresa(req, function(data){
+      res.send(data)
+    })
+   });
+   //Actualizar
+   router.put('/API/empresa/UpdateEmpresa/:id', function (req, res){
+      controladorEmpresa.updateEmpresa(req, function (data){
+          res.send(data);
+      }) 
+   })
 app.post('/user/:id',(req,res) => {
     console.log(req.body)
     console.log(req.params)
